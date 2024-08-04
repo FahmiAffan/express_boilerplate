@@ -1,12 +1,20 @@
-require("dotenv").config();
-const { Sequelize } = require("sequelize");
+// require("dotenv").config();
+// const { Sequelize } = require("sequelize");
+import { Sequelize, Dialect } from "sequelize"
+import dotenv from "dotenv";
+import { PostgresDialect } from "@sequelize/postgres";
+
+dotenv.config();
+
+let dbDialect: Dialect = 'postgres';
+
 const connection_detail = {
   development: {
     database: process.env.DB_NAME,
     host: process.env.DB_HOST,
     username: process.env.DB_USERNAME,
     password: process.env.DB_PASSWORD,
-    dialect: process.env.DB_DIALECT,
+    dialect: dbDialect
   },
 };
 

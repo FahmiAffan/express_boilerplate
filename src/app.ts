@@ -1,10 +1,12 @@
-require("./config/config.js");
+import express, { Application, Request, Response } from "express";
+import index from "./router/index.ts"
 
-const express = require("express");
-const app = express();
+// require("./config/config.js");
+
+
+const app: Application = express();
 const port = 4000;
 
-const index = require("./router/index");
 // const dbconfig = require("./config/config.js");
 
 
