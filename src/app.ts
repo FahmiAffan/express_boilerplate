@@ -1,6 +1,6 @@
 import express, { Application, Request, Response } from "express";
 import index from "./router/index.ts"
-
+import bodyParser from "body-parser";
 // require("./config/config.js");
 
 
@@ -11,6 +11,7 @@ const port = 4000;
 
 
 // app.use(index, dbconfig);
+app.use(bodyParser.json());
 app.use(index);
 
 app.listen(port, () => {

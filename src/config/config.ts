@@ -1,8 +1,10 @@
 // require("dotenv").config();
 // const { Sequelize } = require("sequelize");
-import { Sequelize, Dialect } from "sequelize"
+import { Sequelize } from "sequelize-typescript"
+import { Dialect } from "sequelize";
 import dotenv from "dotenv";
 import { PostgresDialect } from "@sequelize/postgres";
+import Users from "models/User.ts";
 
 dotenv.config();
 
@@ -30,12 +32,16 @@ const connection_detail = {
 
 const sequelize = new Sequelize(connection_detail.development);
 
+sequelize.addModels([Users]);
+
 try {
   sequelize.authenticate();
+  // sequelize.sync();
   console.log("Connected to the database");
 } catch (error) {
   console.error("Unable to connect to the database:", error);
 }
 
 // module.exports = sequelize;
-module.exports = connection_detail;
+// module.exports = connection_detail;
+export default sequelize
