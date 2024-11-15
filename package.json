@@ -1,16 +1,21 @@
 {
   "scripts": {
     "serve": "nodemon",
-    "migrate": "npx sequelize db:migrate"
+    "migrate": "npx sequelize db:migrate",
+    "migrate:fresh" : "npx sequelize-cli db:migrate:undo:all && npx sequelize-cli db:migrate"
   },
   "dependencies": {
+    "@sequelize/mysql": "^7.0.0-alpha.43",
     "@sequelize/postgres": "^7.0.0-alpha.41",
+    "@types/cors": "^2.8.17",
     "bcrypt": "^5.1.1",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.3",
+    "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express-jwt": "^8.4.1",
     "jsonwebtoken": "^9.0.2",
+    "mysql2": "^3.11.4",
     "path": "^0.12.7",
     "pg": "^8.12.0",
     "reflect-metadata": "^0.2.2",

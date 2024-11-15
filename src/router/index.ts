@@ -6,4 +6,8 @@ const api = express.Router();
 api.use('/v1/users', [getUser, postUser]);
 api.use('/v1/auth', [login, register]);
 
+api.get("/", (req: Request, res: Response) => {
+    res.send("Welcome to Perdi API !")
+})
+
 export default api

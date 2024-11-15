@@ -8,29 +8,33 @@ import Users from "models/User.ts";
 
 dotenv.config();
 
-let dbDialect: Dialect = 'postgres';
+let dbDialect: Dialect = 'mysql';
 
-const connection_detail = {
-  development: {
-    database: process.env.DB_NAME,
-    host: process.env.DB_HOST,
-    username: process.env.DB_USERNAME,
-    password: process.env.DB_PASSWORD,
-    dialect: dbDialect
-  },
-};
+// const connection_detail = {
+//   development: {
+//     database: process.env.DB_NAME,
+//     host: process.env.DB_HOST,
+//     username: process.env.DB_USERNAME,
+//     password: process.env.DB_PASSWORD,
+//     dialect: dbDialect
+//   },
+// };
 
 // const db = require("./config.json");
 
-// const sequelize = new Sequelize({
-//   database: db.development.database,
-//   host: db.development.host,
-//   username: db.development.username,
-//   password: db.development.password,
-//   dialect: db?.development?.dialect,
-// });
+import db from "../config/config.json";
 
-const sequelize = new Sequelize(connection_detail.development);
+const connection_detail = {
+  database: db.development.database,
+  host: db.development.host,
+  username: db.development.username,
+  password: db.development.password,
+  dialect: dbDialect,
+  port: db.development.port
+};
+
+// const sequelize = new Sequelize(connection_detail.development);
+const sequelize = new Sequelize(connection_detail);
 
 sequelize.addModels([Users]);
 
