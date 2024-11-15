@@ -21,7 +21,10 @@ export const login = api.post("/login", validateData(userAuthSchema), async (req
         let token = null;
 
         if (Authentication) {
-            token = Jwt.sign(JSON.stringify(Authorization), process.env.JWT_SECRET);
+            token = Jwt.sign({
+                exp: Math.floor(Date.now() / 1000) + (60 * 60),
+                data: Authorization
+            }, process.env.JWT_SECRET);
         }
 
         return res.json({
@@ -55,5 +58,28 @@ export const register = api.post("/register", async (req: Request, res: Response
             message: "",
             data: err.message
         });
+    }
+})
+
+export const currentUser = api.post('/currentUser', async (req: Request, res: Response) => {
+    try {
+        // const data = 
+    } catch (err: any) {
+
+    }
+})
+
+export const logout = api.post("/logout", async (req: Request, res: Response) => {
+    try {
+        const token = req.headers.authorization.split(' ')[1]
+        const data = Jwt.verify(token, process.env.JWT_SECRET);
+
+        console.log(data);
+        return res.json({
+            data: data,
+            message: "success",
+        });
+    } catch (err: any) {
+
     }
 })
