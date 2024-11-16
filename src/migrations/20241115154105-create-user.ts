@@ -5,7 +5,7 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('Users', {
-      id: {
+      id_user: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
@@ -27,6 +27,20 @@ module.exports = {
         type: Sequelize.DATE
       }
     });
+
+    // queryInterface.addIndex('image_properti', ['id_properti'] ,{ unique: false });
+
+    // queryInterface.addConstraint('image_properti', {
+    //   fields: ['id_properti'],
+    //   type: 'foreign key',
+    //   name: 'image_properti_id_properti',
+    //   references: { //Required field
+    //     table: 'Properti',
+    //     field: 'id_properti'
+    //   },
+    //   onDelete: 'cascade',
+    //   onUpdate: 'cascade'
+    // });
   },
   async down(queryInterface, Sequelize) {
     await queryInterface.dropTable('Users');
