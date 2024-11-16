@@ -31,10 +31,10 @@ class Users extends Model {
     declare password: String
 
     @CreatedAt
-    created_at?: Date;
+    createdAt?: Date;
 
     @UpdatedAt
-    updated_at?: Date;
+    updatedAt?: Date;
 }
 
 export default Users

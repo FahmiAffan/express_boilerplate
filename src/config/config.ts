@@ -23,6 +23,10 @@ let dbDialect: Dialect = 'mysql';
 // const db = require("./config.json");
 
 import db from "../config/config.json";
+import Properti from "models/Properti.ts";
+import ImageProperti from "models/ImageProperti.ts";
+import TipeProperti from "models/TipeProperti.ts";
+import TransaksiProperti from "models/TransaksiProperti.ts";
 
 const connection_detail = {
   database: db.development.database,
@@ -36,7 +40,7 @@ const connection_detail = {
 // const sequelize = new Sequelize(connection_detail.development);
 const sequelize = new Sequelize(connection_detail);
 
-sequelize.addModels([Users]);
+sequelize.addModels([Users, Properti, ImageProperti, TipeProperti, TransaksiProperti]);
 
 try {
   sequelize.authenticate();
