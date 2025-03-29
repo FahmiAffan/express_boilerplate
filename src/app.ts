@@ -1,5 +1,5 @@
 import express, { Application, NextFunction, Request, Response } from "express";
-import index from "./router/index.ts"
+import index from "./infrastructure/express/router/index.ts"
 import bodyParser from "body-parser";
 import dotenv from "dotenv";
 import cors from "cors";

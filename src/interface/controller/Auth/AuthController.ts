@@ -4,8 +4,8 @@ import Jwt from "jsonwebtoken";
 import express, { Request, response, Response } from 'express';
 import dotenv from "dotenv";
 import bcrypt from 'bcrypt';
-import { validateData } from "../Schema/ValidationSchema.ts";
-import { userAuthSchema } from "../Schema/UserSchema.ts";
+import { validateData } from "../../validators/Schema/ValidationSchema.ts";
+import { userAuthSchema } from "../../validators/Schema/UserSchema.ts";
 
 dotenv.config();
 

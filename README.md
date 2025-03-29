@@ -18,3 +18,36 @@ SOP penggunaan aplikasi
 ` npm run migrate:fresh `
 
 [Sequlize Query Interface Documentation](https://sequelize.org/api/v6/class/src/dialects/abstract/query-interface.js~queryinterface#instance-method-addConstraint)
+
+
+Penjelasan Folder
+`application/`
+Berisi use cases (business logic) yang mengatur bagaimana data diproses. Contoh: service untuk membuat user, menghitung harga, dll.
+
+`domain/`
+Hanya berisi Entities (Entity Models) yang bersifat murni dan tidak bergantung pada framework atau teknologi tertentu. Contoh: User, Product.
+
+`infrastructure/`
+Berisi implementasi teknis yang mendukung aplikasi. Misalnya:
+
+`database/` : Koneksi database, konfigurasi ORM, dll.
+
+`repositories/`: Implementasi CRUD terhadap database.
+
+`express/:` Konfigurasi Express, routing, middleware, dll.
+
+`config/:` Pengaturan aplikasi (misalnya konfigurasi database, secret keys, dll.).
+
+`interface/`
+Berisi Controllers yang menjadi penghubung antara request dari pengguna dengan use case.
+
+`controllers/`: Menerima HTTP request, memanggil use cases, dan mengembalikan HTTP response.
+
+`validators/`: Validasi request.
+
+`shared/`
+Tempat untuk menyimpan utility functions, constants, atau helpers yang digunakan di seluruh aplikasi.
+
+app.ts
+
+index.js: Entry point aplikasi yang memulai server.
