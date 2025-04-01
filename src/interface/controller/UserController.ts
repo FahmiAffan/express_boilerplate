@@ -1,8 +1,6 @@
 import BaseResponse from "api/BaseResponse.ts"
 import express, { Request, Response, response } from "express"
 import Users from "models/User.ts"
-import sequelize from "../../config/config.ts"
-import { Transaction } from "sequelize"
 
 const api = express.Router()
 export const getUser = api.get("/", async (req: Request, res: Response) => {
@@ -21,7 +19,7 @@ export const getUser = api.get("/", async (req: Request, res: Response) => {
 )
 
 export const postUser = api.post("/", async (req: Request, res: Response) => {
-    const trx: Transaction = await sequelize.transaction();
+    // const trx: Transaction = await sequelize.transaction();
     try {
         // const user = await Users.create({
         //     username: request.username,
@@ -29,7 +27,7 @@ export const postUser = api.post("/", async (req: Request, res: Response) => {
         //     password: request.password
         // });
         const user = await Users.create(req.body)
-        trx.commit();
+        // trx.commit();
 
         return res.status(200).json({
             message: "Succesfully Post Data",
@@ -38,7 +36,7 @@ export const postUser = api.post("/", async (req: Request, res: Response) => {
         })
 
     } catch (err: any) {
-        trx.rollback();
+        // trx.rollback();
         res.status(400).json({
             message: "Error Post Data",
             errorMessage: err,
