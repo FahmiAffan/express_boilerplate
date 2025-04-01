@@ -1,16 +1,16 @@
-require("dotenv").config();
 // const { Sequelize } = require("sequelize");
 import { Dialect } from "sequelize";
 import dotenv from "dotenv";
-import { Mongoose } from "mongoose";
+import Mongoose from "mongoose";
 
 dotenv.config();
 
-const mongoose: Mongoose = null;
+// const mongoose: Mongoose = null;
 
 const connectDB = async () => {
   try {
-    await mongoose.connect(process.env.MONGO_URI);
+    // await mongoose.connect(process.env.MONGO_URI);
+    Mongoose.connect(process.env.MONGO_URI);
     console.log('MongoDB Connected...');
   } catch (err: any) {
     console.error('MongoDB Connection Error:', err.message);

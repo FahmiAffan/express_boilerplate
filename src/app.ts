@@ -1,8 +1,10 @@
 import express, { Application, NextFunction, Request, Response } from "express";
 import index from "./infrastructure/express/router/index.ts"
+import connectDB from './infrastructure/config/config.ts';
 import bodyParser from "body-parser";
 import dotenv from "dotenv";
 import cors from "cors";
+import { error } from "console";
 // require("./config/config.js");
 
 
@@ -30,5 +32,6 @@ app.use(bodyParser.json());
 app.use(index);
 
 app.listen(port, () => {
+  connectDB();
   console.log(`Server run on port ${port}`);
 });
