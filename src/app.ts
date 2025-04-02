@@ -1,9 +1,9 @@
 import express, { Application, NextFunction, Request, Response } from "express";
 import index from "./infrastructure/express/router/index.ts"
+import connectDB from './infrastructure/config/config.ts';
 import bodyParser from "body-parser";
 import dotenv from "dotenv";
 import cors from "cors";
-// require("./config/config.js");
 
 
 const app: Application = express();
@@ -13,7 +13,7 @@ const port = process.env.SERVER_PORT || '8080';
 
 
 // app.use(index, dbconfig);
-const allowedOrigins = ['http://localhost:3000'];
+const allowedOrigins = process.env.ALLOWED_URL;
 const corsOption: cors.CorsOptions = {
   origin: allowedOrigins
 };
@@ -30,5 +30,6 @@ app.use(bodyParser.json());
 app.use(index);
 
 app.listen(port, () => {
+  connectDB();
   console.log(`Server run on port ${port}`);
 });

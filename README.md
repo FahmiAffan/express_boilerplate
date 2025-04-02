@@ -51,3 +51,9 @@ Tempat untuk menyimpan utility functions, constants, atau helpers yang digunakan
 app.ts
 
 index.js: Entry point aplikasi yang memulai server.
+
+# Standarisasi
+
+`naming` : menggunakan Pascal Case dengan format (service-dir)
+
+`response` : menggunakan Handler Base Response Handler dan Error Handler
