@@ -1,4 +1,4 @@
-import BaseResponse from "api/BaseResponse.ts"
+import BaseResponse from "interface/handler/BaseResponse.ts"
 import Users from "models/User.ts"
 import Jwt from "jsonwebtoken";
 import express, { Request, response, Response } from 'express';

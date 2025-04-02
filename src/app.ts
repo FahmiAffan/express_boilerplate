@@ -15,7 +15,7 @@ const port = process.env.SERVER_PORT || '8080';
 
 
 // app.use(index, dbconfig);
-const allowedOrigins = ['http://localhost:3000'];
+const allowedOrigins = process.env.ALLOWED_URL;
 const corsOption: cors.CorsOptions = {
   origin: allowedOrigins
 };

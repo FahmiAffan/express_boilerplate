@@ -9,7 +9,7 @@ class BaseResponse {
             }).status(status);
         }
     }
-
+    
     error(message: String, status: number) {
         return async (res: Response) => {
             return res.json({

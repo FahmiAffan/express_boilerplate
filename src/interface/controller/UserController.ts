@@ -1,4 +1,4 @@
-import BaseResponse from "api/BaseResponse.ts"
+import BaseResponse from "interface/handler/BaseResponse.ts"
 import express, { Request, Response, response } from "express"
 import Users from "models/User.ts"
 
@@ -39,7 +39,8 @@ export const postUser = api.post("/", async (req: Request, res: Response) => {
         // trx.rollback();
         res.status(400).json({
             message: "Error Post Data",
-            errorMessage: err,
+            errorMessage: err.message,
         })
+        console.log(err.message)
     }
 })
