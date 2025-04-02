@@ -1,63 +1,24 @@
-import { Table, Column, Model, HasMany, CreatedAt, PrimaryKey, NotNull, AllowNull, UpdatedAt } from 'sequelize-typescript';
-import { StringDataTypeConstructor, EnumDataTypeConstructor, DateDataTypeConstructor, AbstractDataTypeConstructor, INTEGER, DataType, DataTypes } from 'sequelize';
+// class User{
+//     String nama_lengkap
+//     String username
+//     String password
+//     Text avatar
+//     String telp
+//     Text alamat
+// }
 
-@Table({
-    modelName: "Users",
-    tableName: "user",
-    timestamps: true,
+import mongoose from "mongoose";
+
+const userSchema = new mongoose.Schema({
+    name: { type: String },
+    email: { type: String, unique: true },
+    password: { type: String },
+    telp: { type: String },
+    alamat: { type: String },
+    avatar: { type: String },
+    createdAt: { type: Date, default: Date.now },
 })
 
-class Users extends Model {
-    @Column({
-        primaryKey: true,
-        autoIncrement: true,
-        type: DataTypes.INTEGER
-    })
-    declare id_user: number
+const Users = mongoose.model('User', userSchema);
 
-    @Column({
-        type: DataTypes.ENUM('admin', 'guest', 'master_data')
-    })
-    declare role: String
-
-    @Column({
-        type: DataTypes.STRING,
-    })
-    declare username: String
-
-    @Column({
-        type: DataTypes.STRING
-    })
-    declare password: String
-
-    @CreatedAt
-    createdAt?: Date;
-
-    @UpdatedAt
-    updatedAt?: Date;
-}
-
-export default Users
-// export class Users extends Model {
-//     @PrimaryKey
-//     @Column
-//     id_user: AbstractDataTypeConstructor = DataType.UUID
-
-//     @Column
-//     role = DataType.ENUM({
-//         values: ['kasir', 'pelanggan']
-//     })
-
-//     @Column
-//     username: StringDataTypeConstructor = DataType.STRING
-
-//     @Column
-//     password: StringDataTypeConstructor = DataType.STRING
-
-//     @CreatedAt
-//     createdAt?: DateDataTypeConstructor = DataType.DATE;
-
-//     @UpdatedAt
-//     updatedOn?: DateDataTypeConstructor = DataType.DATE;
-
-// }
+export default Users;

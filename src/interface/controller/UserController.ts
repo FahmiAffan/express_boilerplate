@@ -6,7 +6,7 @@ const api = express.Router()
 export const getUser = api.get("/", async (req: Request, res: Response) => {
     try {
         // const data = { id_user: "", nama_user: "" };
-        const data = await Users.findAll();
+        const data = await Users.find();
         // return new BaseResponse().ok(data, "halo", 200);
         res.status(200).json({ data: data, message: "success" })
     } catch (err: any) {
