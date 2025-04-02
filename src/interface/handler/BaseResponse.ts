@@ -1,21 +1,20 @@
-import { Response } from "express"
+import express, { Response } from "express"
+
 
 class BaseResponse {
-    ok(data: Object, message: String, status: number) {
-        return async (res: Response) => {
-            return res.json({
-                data: data,
-                message: message
-            }).status(status);
-        }
+    ok(data: Object | String, message: String, status: number, res: express.Response) {
+
+        return res.status(status).json({
+            ...data,
+            message: message
+        });
     }
-    
-    error(message: String, status: number) {
-        return async (res: Response) => {
-            return res.json({
-                message: message
-            }).status(status);
-        }
+
+    error(data: Object | String, message: String, status: number, res: express.Response) {
+        return res.status(status).json({
+            ...data,
+            message: message
+        });
     }
 }
 

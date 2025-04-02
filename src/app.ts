@@ -4,8 +4,6 @@ import connectDB from './infrastructure/config/config.ts';
 import bodyParser from "body-parser";
 import dotenv from "dotenv";
 import cors from "cors";
-import { error } from "console";
-// require("./config/config.js");
 
 
 const app: Application = express();
