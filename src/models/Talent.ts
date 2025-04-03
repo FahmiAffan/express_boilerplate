@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-import Organizer from "./organizer.ts";
 
 const talentSchema = new mongoose.Schema({
     name: { type: String },
