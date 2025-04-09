@@ -7,6 +7,6 @@ const talentSchema = new mongoose.Schema({
     createdAt: { type: Date, default: Date.now },
 })
 
-const Users = mongoose.model('Talent', talentSchema);
+const Talent = mongoose.model('Talent', talentSchema);
 
-export default Users;
+export default Talent;
